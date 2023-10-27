@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/toggleButton.css">
+</head>
+
+<body>
+    <div id="Container">
+        <div id="Board" class="fl" style="height: 600;">
+            <div id="Navbar">
+
+                <div id="shapesSection" class="nav-item">
+                    <h2 style="margin-left: 5px;">Get Shape</h2>
+                    <h5>Shapes</h5>
+                    <h5>Shapes</h5>
+                    <h5>Shapes</h5>
+                </div>
+
+                <div id="options" class="nav-item">
+                    <!-- <label class="switch"></label> -->
+                    <h2 style="margin-left: 5px;">Options</h2>
+                    <div onclick="setState(0)" class="pointer">
+                        <h4 class="highlight">Brush</h4>
+                    </div>
+                    <div onclick="setState(1)" class="pointer">
+                        <h4>Eraser</h4>
+                    </div>
+                    <div onclick="clearCanvas()" class="pointer">
+                        <h3>Clear Board</h3>
+                    </div>
+                    <div><input id="brushSize" type="range" min="1" max="40" value="20"></div>
+
+
+                </div>
+
+                <div class="nav-item fl" style="flex-direction: column;">
+                    <div>
+                        <h2 style="margin-left: 5px;">Select colour</h2>
+                    </div>
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <input style="border-radius: 30%;" id="selectedColour" type="color" value="#000000">
+                    </div>
+                    <br>
+                    <div id="colourSection"></div>
+                </div>
+            </div>
+
+            <div id="Main" style="margin-left: 10px;">
+                <canvas id="canvas"></canvas>
+                <br>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="script/canvas.js"></script>
+    <script src="script/colourCells.js"></script>
+    <script src="script/toggleButton.js"></script>
+</body>
+
+</html>
