@@ -17,3 +17,24 @@ if (labelElement) {
     labelElement.appendChild(inputElement);
     labelElement.appendChild(spanElement);
 }
+
+
+function hexToCssColor(hex) {
+    // for Remove "#" char
+    hex = hex.replace("#", "");
+
+    // If the hex value is shorthand (e.g., "#123"), expand it to the full form
+    if (hex.length === 3) {
+        hex = hex
+            .split("")
+            .map((char) => char + char)
+            .join("");
+    }
+
+    // Convert the hex value to RGB format
+    const r = parseInt(hex.slice(0, 2), 16);
+    const g = parseInt(hex.slice(2, 4), 16);
+    const b = parseInt(hex.slice(4, 6), 16);
+
+    return `rgb(${r}, ${g}, ${b})`;
+}

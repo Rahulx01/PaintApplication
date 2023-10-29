@@ -1,7 +1,10 @@
 var optionState = 0;
+const canvas = document.getElementById("canvas");
+const context = canvas.getContext("2d");
+let drawing = false;
 
-function setState(optionState){
-    this.optionState = optionState;
+function setState(newState){
+    optionState = newState;
     const optionClicked = document.getElementById("options").querySelectorAll("h4");
     if(optionState == 0){
         optionClicked[0].classList.add("highlight");
@@ -13,43 +16,40 @@ function setState(optionState){
     }
 }
 
-const canvas = document.getElementById("canvas");
-const context = canvas.getContext("2d");
-let drawing = false;
+let lastX, lastY;
 
-canvas.addEventListener("mousedown", () => drawing = true);
-canvas.addEventListener("mouseup", () => drawing = false);
-canvas.addEventListener("mousemove", draw);
+canvas.addEventListener("mousedown", (e) => {
+    console.log("ded");
+    drawing = true;
+    lastX = e.clientX - canvas.getBoundingClientRect().left;
+    lastY = e.clientY - canvas.getBoundingClientRect().top;
+});
 
-// function draw(e) {
-//     if (!drawing) return;
-    
-//     // if(!optionState) 
-//     // else context.strokeStyle = "white";
-//     context.strokeStyle = "black";
-//     context.beginPath();
-//     context.lineWidth = document.getElementById("brushSize").value;
-//     context.lineCap = "square";
-//     context.moveTo(e.clientX - canvas.getBoundingClientRect().left, e.clientY - canvas.getBoundingClientRect().top);
-//     context.lineTo(e.clientX - canvas.getBoundingClientRect().left, e.clientY - canvas.getBoundingClientRect().top);
-//     console.log(context.strokeStyle);
-//     context.stroke();
-// }
-
-function draw(e) {
+canvas.addEventListener("mousemove", (e) => {
     if (!drawing) return;
 
+    let x = e.clientX - canvas.getBoundingClientRect().left;
+    let y = e.clientY - canvas.getBoundingClientRect().top;
+
     context.beginPath();
-    context.lineWidth = 10;
-    context.lineCap = "square";
-    context.strokeStyle = "black";
-    context.moveTo(e.clientX - canvas.getBoundingClientRect().left, e.clientY - canvas.getBoundingClientRect().top);
-    context.lineTo(e.clientX - canvas.getBoundingClientRect().left, e.clientY - canvas.getBoundingClientRect().top);
+    context.lineWidth = document.getElementById("brushSize").value;
+    context.lineCap = "round"; // You can use "round" for smoother lines
+    context.strokeStyle = optionState ? "white" : document.getElementById("selectedColour").value;
+    context.moveTo(lastX, lastY);
+    context.lineTo(x, y);
     context.stroke();
-}
+
+    lastX = x;
+    lastY = y;
+});
+
+document.addEventListener("mouseup", () => (drawing = false));
+
+
+//
 
 function hexToCssColor(hex) {
-    // Remove the "#" character if it's present
+    // for Remove "#" char
     hex = hex.replace("#", "");
 
     // If the hex value is shorthand (e.g., "#123"), expand it to the full form
@@ -70,5 +70,6 @@ function hexToCssColor(hex) {
 
 
 function clearCanvas() {
+    setState(0);
     context.clearRect(0, 0, canvas.width, canvas.height);
 }

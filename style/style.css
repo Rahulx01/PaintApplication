@@ -17,8 +17,6 @@ body{
 }
 
 #canvas {
-    width: 850px;
-    height: 99%;
     border: 5px solid #000;
     border-radius: 10%;
     background-color: white;
