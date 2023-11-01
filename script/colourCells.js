@@ -15,7 +15,6 @@ colourDetail.forEach(i => {
         colourCell.style.backgroundColor = cellColour;
         colourCell.onclick = () => {
             document.getElementById('selectedColour').value = cellColour;
-            // document.getElementById('selectedColour').style.backgroundColor = cellColour;
         };
         colourRow.appendChild(colourCell);
     })
