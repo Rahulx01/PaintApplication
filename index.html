@@ -3,7 +3,8 @@
 
 <head>
     <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="style/toggleButton.css">
+    <script src="script/canvas.js" defer></script>
+    <script src="script/colourCells.js" defer></script>
 </head>
 
 <body>
@@ -14,20 +15,20 @@
                 <div id="shapesSection" class="nav-item">
                     <h2 style="margin-left: 5px;">Get Shape</h2>
                     <h5>Shapes</h5>
-                    <button id="CircleShape" onclick="drawCircle()">Circle</button>
-                    <h5>Shapes</h5>
+                    <button id="CircleShape">Circle</button>
+                    <button id="SquareShape">Square</button>
                 </div>
 
                 <div id="options" class="nav-item">
                     <!-- <label class="switch"></label> -->
                     <h2 style="margin-left: 5px;">Options</h2>
-                    <div onclick="setState(0)" class="pointer">
-                        <h4 class="highlight">Brush</h4>
+                    <div class="pointer">
+                        <h4 class="highlight" id="brush">Brush</h4>
                     </div>
-                    <div onclick="setState(1)" class="pointer">
-                        <h4>Eraser</h4>
+                    <div class="pointer">
+                        <h4 id="eraser">Eraser</h4>
                     </div>
-                    <div onclick="clearCanvas()" class="pointer">
+                    <div class="pointer" onclick="clearCanvas()">
                         <h3>Clear Board</h3>
                     </div>
                     <div><input id="brushSize" type="range" min="1" max="40" value="20"></div>
@@ -53,11 +54,6 @@
             </div>
         </div>
     </div>
-
-
-    <script src="script/canvas.js"></script>
-    <script src="script/colourCells.js"></script>
-    <script src="script/toggleButton.js"></script>
 </body>
 
 </html>
