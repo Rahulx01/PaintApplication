@@ -45,3 +45,7 @@ If you'd like to contribute to this project, feel free to fork the repository, m
 
 
 ![image](https://github.com/Rahulx01/PaintApplication/assets/101088902/c8b8605b-c1e7-473c-a82f-6b8f154fdd9f)
+<<<<<<< HEAD
+=======
+
+>>>>>>> d01a4cced5edadf58cbe19aec826f37dc88f15cf
